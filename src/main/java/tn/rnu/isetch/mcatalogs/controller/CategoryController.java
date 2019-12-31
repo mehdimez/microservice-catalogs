@@ -9,31 +9,32 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequestMapping("/category")
 @CrossOrigin
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping("/categories")
+    @GetMapping("/list")
     public List<Category> getAllCategories() {return categoryService.getAllCategories();}
 
-    @GetMapping("/categories/{id}")
+    @GetMapping("/categoryById/{id}")
     public Category getCategoryById(@PathVariable("id") long id) {
         return categoryService.getCategoryById(id);
     }
 
-    @PostMapping("/categories")
+    @PostMapping("/add")
     public Category addCategory(@RequestBody Category category) {
         return categoryService.addCategory(category);
     }
 
-    @PutMapping("/categories")
+    @PutMapping("/update")
     public void updateCategory(@Valid @RequestBody Category category) {
         categoryService.updateCategory(category);
     }
 
-    @DeleteMapping("categories/{id}")
+    @DeleteMapping("delete/{id}")
     public void deleteCategory(@PathVariable("id") long id) {
         categoryService.deleteCategory(id);
     }
