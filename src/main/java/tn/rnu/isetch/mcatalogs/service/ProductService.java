@@ -4,6 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 import tn.rnu.isetch.mcatalogs.entity.Product;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService {
 
@@ -11,7 +12,7 @@ public interface ProductService {
 
     Product updateProduct(Product product);
 
-    Product getProductById(Long id);
+    Optional<Product> getProductById(Long id);
 
     Product addProduct(Product product, MultipartFile[] files);
 

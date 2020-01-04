@@ -4,13 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import tn.rnu.isetch.mcatalogs.entity.Product;
+import tn.rnu.isetch.mcatalogs.exceptions.ProductNotFoundException;
 import tn.rnu.isetch.mcatalogs.repository.ProductRepository;
 
+import java.awt.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -20,7 +23,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        List<Product> products = productRepository.findAll();
+        if(products.isEmpty())
+            throw new ProductNotFoundException("No product is available for sale");
+        return products;
     }
 
     @Override
@@ -49,7 +55,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductById(Long id) {
-        return productRepository.findById(id).get();
+    public Optional<Product> getProductById(Long id) {
+        Optional<Product> product = productRepository.findById(id);
+        if(!product.isPresent())
+            throw new ProductNotFoundException("The product corresponding to the id "+id+" does not exist");
+        return product;
     }
 }
