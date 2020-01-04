@@ -1,28 +1,19 @@
-package tn.rnu.isetch.mcatalogs.entity;
+package tn.rnu.isetch.mcatalogs.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.io.Serializable;
 
-@Entity
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String name;
-    private String gender;
-    private int age;
-    private String color;
-    private String size;
+public class ProductDto implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private Long id ;
+    private String name ;
+    private String gender ;
+    private int age ;
+    private String color ;
+    private String size ;
     private String picture;
-    private double vat;
-    private double priceExclTax;
-
-    public Product() {
-    }
-
+    private double vat ;
+    private double priceExclTax ;
+    private double priceInclTax;
 
     public Long getId() {
         return id;
@@ -80,19 +71,28 @@ public class Product {
         this.vat = vat;
     }
 
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
     public double getPriceExclTax() {
         return priceExclTax;
     }
 
     public void setPriceExclTax(double priceExclTax) {
         this.priceExclTax = priceExclTax;
+    }
+
+    public double getPriceInclTax() {
+        this.priceInclTax = this.priceExclTax* (1+this.vat/100);
+        return priceInclTax;
+    }
+
+    public void setPriceInclTax(double priceInclTax) {
+        this.priceInclTax = priceInclTax;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }
