@@ -28,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
             throw new ProductNotFoundException("No product is available for sale");
         return products;
     }
-
+ 
     @Override
     public Product updateProduct(Product product) {
         return productRepository.save(product);
