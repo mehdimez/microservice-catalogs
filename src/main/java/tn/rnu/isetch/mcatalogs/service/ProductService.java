@@ -1,5 +1,6 @@
 package tn.rnu.isetch.mcatalogs.service;
 
+import org.springframework.web.multipart.MultipartFile;
 import tn.rnu.isetch.mcatalogs.entity.Product;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public interface ProductService {
 
     Product getProductById(Long id);
 
-    Product addProduct(Product product);
+    Product addProduct(Product product, MultipartFile[] files);
 
     void deleteProduct(Long id);
 }

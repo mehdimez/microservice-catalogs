@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import tn.rnu.isetch.mcatalogs.dto.ProductDto;
 import tn.rnu.isetch.mcatalogs.entity.Product;
 import tn.rnu.isetch.mcatalogs.service.ProductServiceImpl;
@@ -33,9 +34,9 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public Product addProduct(ProductDto productDto){
+    public Product addProduct(ProductDto productDto, @RequestParam("files")MultipartFile[] files){
         Product product = modelMapper.map(productDto, Product.class);
-        return productService.updateProduct(product);
+        return productService.addProduct(product, files);
     }
     @PutMapping("/update")
     public Product updateProduct(ProductDto productDto) {

@@ -9,29 +9,20 @@ import javax.persistence.Id;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id ;
+    private Long id;
 
-    private String name ;
-    private String gender ;
-    private int age ;
-    private String color ;
-    private String size ;
-
-    private double vat ;
-    private double priceExclTax ;
-
-    public Product(String name, String gender, int age, String color, String size, double vat, double priceExclTax) {
-        this.name = name;
-        this.gender = gender;
-        this.age = age;
-        this.color = color;
-        this.size = size;
-        this.vat = vat;
-        this.priceExclTax = priceExclTax;
-    }
+    private String name;
+    private String gender;
+    private int age;
+    private String color;
+    private String size;
+    private String picture;
+    private double vat;
+    private double priceExclTax;
 
     public Product() {
     }
+
 
     public Long getId() {
         return id;
@@ -87,6 +78,14 @@ public class Product {
 
     public void setVat(double vat) {
         this.vat = vat;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public double getPriceExclTax() {

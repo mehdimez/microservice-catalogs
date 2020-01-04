@@ -10,6 +10,7 @@ public class ProductDto implements Serializable {
     private int age ;
     private String color ;
     private String size ;
+    private String picture;
     private double vat ;
     private double priceExclTax ;
     private double priceInclTax;
@@ -85,5 +86,13 @@ public class ProductDto implements Serializable {
 
     public void setPriceInclTax(double priceInclTax) {
         this.priceInclTax = priceInclTax;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }
