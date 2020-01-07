@@ -34,12 +34,12 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public Product addProduct(ProductDto productDto, @RequestParam("files")MultipartFile[] files){
+    public Product addProduct(@RequestBody ProductDto productDto, @RequestParam("files")MultipartFile[] files){
         Product product = modelMapper.map(productDto, Product.class);
         return productService.addProduct(product, files);
     }
     @PutMapping("/update")
-    public Product updateProduct(ProductDto productDto) {
+    public Product updateProduct(@RequestBody ProductDto productDto) {
         Product product = modelMapper.map(productDto, Product.class);
         return productService.updateProduct(product);
     }
