@@ -27,7 +27,7 @@ public class ProductController {
         return modelMapper.map(productService.getAllProducts(), listType);
     }
 
-    @GetMapping("/productById/{id}")
+    @GetMapping("/product/{id}")
     public ProductDto getProductById(@PathVariable("id") Long id){
         Type type = new TypeToken<ProductDto>(){}.getType();
         return modelMapper.map(productService.getProductById(id), type);
