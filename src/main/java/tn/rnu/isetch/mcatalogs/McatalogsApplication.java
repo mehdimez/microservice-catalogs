@@ -46,6 +46,7 @@ public class McatalogsApplication implements CommandLineRunner {
 		p4.setLook(look);
 productRepository.save(look);
 		productRepository.save(p2);
+		productRepository.save(p3);
 		productRepository.save(p4);
 
 

@@ -18,11 +18,12 @@ public class Product {
     private double vat;
     private double priceExclTax;
 
-   /* @OneToMany(mappedBy = "look")
-   private List<Product> productList ;*/
+    @OneToMany(mappedBy = "look")
+   private List<Product> productList ;
+
     @ManyToOne
-    @JoinColumn(name = "look_id")
-  private Product look ;
+            @JoinColumn(name = "look_id")
+  private   Product look ;
 
 
     public Product() {
@@ -39,7 +40,7 @@ public class Product {
         this.picture = picture;
         this.vat = vat;
         this.priceExclTax = priceExclTax;
-       /* this.productList = productList;*/
+        this.productList = productList;
         this.look = look;
     }
 
@@ -115,13 +116,13 @@ public class Product {
         this.priceExclTax = priceExclTax;
     }
 
-  /*  public List<Product> getProductList() {
+    public List<Product> getProductList() {
         return productList;
     }
 
     public void setProductList(List<Product> productList) {
         this.productList = productList;
-    }*/
+    }
 
     public Product getLook() {
         return look;

@@ -1,5 +1,6 @@
 package tn.rnu.isetch.mcatalogs.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import tn.rnu.isetch.mcatalogs.entity.Product;
 
 import java.io.Serializable;
@@ -17,7 +18,7 @@ public class ProductDto implements Serializable {
     private double vat ;
     private double priceExclTax ;
     private double priceInclTax;
-
+    @JsonIgnoreProperties("look")
     private List<ProductDto> productList ;
 
     private   ProductDto look ;
