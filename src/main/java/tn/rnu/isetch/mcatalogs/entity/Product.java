@@ -1,9 +1,7 @@
 package tn.rnu.isetch.mcatalogs.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -20,7 +18,31 @@ public class Product {
     private double vat;
     private double priceExclTax;
 
+    @OneToMany(mappedBy = "look")
+   private List<Product> productList ;
+
+    @ManyToOne
+            @JoinColumn(name = "look_id")
+  private   Product look ;
+
+
     public Product() {
+    }
+
+
+
+
+    public Product(String name, String gender, int age, String color, String size, String picture, double vat, double priceExclTax, List<Product> productList, Product look) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.color = color;
+        this.size = size;
+        this.picture = picture;
+        this.vat = vat;
+        this.priceExclTax = priceExclTax;
+        this.productList = productList;
+        this.look = look;
     }
 
     public Long getId() {
@@ -93,5 +115,21 @@ public class Product {
 
     public void setPriceExclTax(double priceExclTax) {
         this.priceExclTax = priceExclTax;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
+    public Product getLook() {
+        return look;
+    }
+
+    public void setLook(Product look) {
+        this.look = look;
     }
 }
