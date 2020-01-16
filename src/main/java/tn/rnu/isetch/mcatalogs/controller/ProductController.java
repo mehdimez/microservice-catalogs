@@ -27,19 +27,19 @@ public class ProductController {
         return modelMapper.map(productService.getAllProducts(), listType);
     }
 
-    @GetMapping("/productById/{id}")
+    @GetMapping("/product/{id}")
     public ProductDto getProductById(@PathVariable("id") Long id){
         Type type = new TypeToken<ProductDto>(){}.getType();
         return modelMapper.map(productService.getProductById(id), type);
     }
 
     @PostMapping("/add")
-    public Product addProduct(ProductDto productDto, @RequestParam("files")MultipartFile[] files){
+    public Product addProduct(@RequestBody ProductDto productDto, @RequestParam("files")MultipartFile[] files){
         Product product = modelMapper.map(productDto, Product.class);
         return productService.addProduct(product, files);
     }
     @PutMapping("/update")
-    public Product updateProduct(ProductDto productDto) {
+    public Product updateProduct(@RequestBody ProductDto productDto) {
         Product product = modelMapper.map(productDto, Product.class);
         return productService.updateProduct(product);
     }

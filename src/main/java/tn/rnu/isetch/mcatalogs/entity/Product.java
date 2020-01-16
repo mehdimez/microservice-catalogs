@@ -31,6 +31,7 @@ public class Product {
 
 
 
+
     public Product(String name, String gender, int age, String color, String size, String picture, double vat, double priceExclTax, List<Product> productList, Product look) {
         this.name = name;
         this.gender = gender;
